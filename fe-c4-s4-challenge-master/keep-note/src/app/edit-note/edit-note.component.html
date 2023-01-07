@@ -1,0 +1,23 @@
+
+<mat-card mat-ripple class="card-content">
+    <mat-card-content>
+        <form id="edit-form">
+            <mat-form-field class="input-field" appearance="legacy">
+                <mat-label>Note Title</mat-label>
+                <input matInput [(ngModel)]="note.title" name="title" type="text" >
+            </mat-form-field> <br>
+            <mat-form-field class="input-field" appearance="legacy">
+                <mat-label>Note Content</mat-label>
+                <input matInput [(ngModel)]="note.content" name="content" type="text" >
+            </mat-form-field>
+            <mat-card-actions>
+                <button color="accent" mat-icon-button (click)="editNote()">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button color="accent" mat-icon-button (click)="deleteNote()">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-card-actions>
+        
+        </form>
+    </mat-card-content>

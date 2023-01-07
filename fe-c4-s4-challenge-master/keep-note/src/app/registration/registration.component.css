@@ -1,0 +1,11 @@
+mat-form-field{
+    background-color: rgb(231, 228, 228,0.5);  
+    border-radius: 5%; 
+    margin: 10px;
+}
+#formfield{
+    width: 37.5%;
+}
+#gender{
+    margin-right: 50px;
+}

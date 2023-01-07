@@ -1,0 +1,111 @@
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()"
+    style="margin-left: 300px; margin-right: 400px; background-color: aliceblue">
+    <mat-form-field>
+        <input matInput type="text" placeholder="First Name" name="firstName" id="firstName"
+            formControlName="firstName" />
+        <mat-error *ngIf="firstName.hasError('required')">
+            First Name is required.
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="text" placeholder="Last Name" name="lastName" formControlName="lastName" />
+        <mat-error *ngIf="lastName.hasError('required')">
+            Last Name is required.
+        </mat-error>
+        <mat-error *ngIf="lastName.hasError('minlength')">
+            Lastname should contain min 2 characters.
+        </mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field id="formfield">
+        <input matInput type="email" placeholder="Email" name="email" formControlName="email" />
+        <mat-error *ngIf="email.hasError('required')">
+            Email is required.
+        </mat-error>
+        <mat-error *ngIf="email.hasError('email')">
+            Email valid email address.
+        </mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+        <input matInput type="text" placeholder="Password" name="password" formControlName="password" />
+        <mat-error *ngIf="password.hasError('required')">
+            Password is required.
+        </mat-error>
+        <mat-error *ngIf="password.hasError('pattern')">
+            Password should have min 8 letter password, with at least a symbol, upper
+            and lower case letters and a number.
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="text" placeholder="Confirm Password" name="confirmPassword"
+            formControlName="confirmPassword" />
+        <mat-error *ngIf="!registrationForm.hasError('mustMatchValidator')">
+            Password and Confirm Password should match.
+        </mat-error>
+    </mat-form-field>
+    <br />
+    <br />
+    <br />
+    <mat-radio-group aria-label="Gender" name="gender" formControlName="gender">
+        <mat-label id="gender">Gender</mat-label>
+        <mat-radio-button value="1">Male</mat-radio-button>
+        <mat-radio-button value="2" style="margin-left: 10px">Female</mat-radio-button>
+    </mat-radio-group>
+    <br />
+    <mat-form-field>
+        <input matInput type="number" placeholder="Age" name="age" formControlName="age" />
+        <mat-error *ngIf="age.hasError('required')"> Age is required. </mat-error>
+        <mat-error *ngIf="age.hasError('min')">
+            Age must be 18 years and above.
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="tel" placeholder="Phone Number" name="phoneNumber" formControlName="phoneNumber" />
+        <mat-error *ngIf="phoneNumber.hasError('required')">
+            Phone Number is required.
+        </mat-error>
+        <mat-error *ngIf="phoneNumber.hasError('pattern')">
+            Valid Phone Number contain 10 digits starting with 7/8/9
+        </mat-error>
+    </mat-form-field>
+    <div formGroupName="address">
+        <mat-label>Address</mat-label> <br />
+        <mat-form-field id="formfield">
+            <input matInput type="text" placeholder="Street" name="street" formControlName="street" />
+            <mat-error *ngIf="street.hasError('required')">
+                Street is required.
+            </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+            <input matInput type="text" placeholder="City" name="city" formControlName="city" />
+            <mat-error *ngIf="city.hasError('required')">
+                City is required.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" placeholder="State" name="state" formControlName="state" />
+            <mat-error *ngIf="state.hasError('required')">
+                State is required.
+            </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field id="formfield">
+            <input matInput type="text" placeholder="Zip Code" name="zipCode" formControlName="zipCode" />
+            <mat-error *ngIf="zipCode.hasError('required')">
+                ZipCode is required.
+            </mat-error>
+            <mat-error *ngIf="zipCode.hasError('pattern')">
+                ZipCode should be 5 digit number.
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <button mat-raised-button type="reset" color="accent" style="margin-left: 20px">
+        Reset
+    </button>
+    <button mat-raised-button type="submit" [disabled]="!registrationForm.valid" color="accent"
+        style="margin-left: 20px">
+        Submit
+    </button>
+</form>

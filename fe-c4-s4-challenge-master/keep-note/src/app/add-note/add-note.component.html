@@ -1,0 +1,63 @@
+<div style="margin-left: 400px;">
+<!-- <form >
+    <input type="text" placeholder="enter id" #id> <br>
+<input type="text" placeholder="enter title" name="title" #title> <br>
+<input type="text" placeholder="enter content" name="unit" #content> <br>
+<button (click)="saveFruit(id.value, title.value, content.value)">Save</button>
+</form>
+</div> -->
+    <!-- <h2 style="color: rgb(206, 58, 82); margin-left: 250px;" class="ms-5"> We appreciate your Feedback! </h2> -->
+    <!-- (ngSubmit)="onSubmit(feedback)" #feedback="ngForm" -->
+    
+ <form (ngSubmit)="onSubmit(noteForm)" #noteForm ="ngForm" >
+     <mat-form-field>
+         <input type="text" matInput name="title" #title="ngModel" placeholder="Note Title" [(ngModel)]="cardAdd.title" minlength="5" required>
+         
+         <div *ngIf="title?.invalid && (title?.dirty || title?.touched)">
+            ​<div *ngIf="title?.errors?.['required']">​
+                Title Name is required​
+            </div>
+            <div *ngIf="title?.errors?.['minlength']">​
+                Title Minimum Length is 5
+            </div>​
+        </div>
+     </mat-form-field>
+     
+     <br>
+     <mat-form-field>
+         <input type="text" matInput name="content" #content="ngModel" [(ngModel)]="cardAdd.content" placeholder="Note Content" required minlength="5" >
+         <div *ngIf="content?.invalid && (content?.dirty || content?.touched)">
+            <div *ngIf="content?.errors?.['required']">
+            Content name is required
+            </div>
+            <div color="danger" *ngIf="content?.errors?.['minlength']">
+            Content Minimum Length is 5
+            </div>
+        </div>
+     </mat-form-field>
+     <br>
+     <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [min]="minDate" name="date" [matDatepicker]="picker"[(ngModel)]="cardAdd.date">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+     <br>
+     <mat-form-field >
+        <input type="text" matInput name="category" placeholder="Category"  [(ngModel)]="cardAdd.category">
+     </mat-form-field> <br>
+     <mat-radio-group aria-label="Overall priority"  name="priority"   [(ngModel)]="cardAdd.priority">
+        <mat-label style=" padding: 15px;">Priority</mat-label>
+        <mat-radio-button value="Low">Low</mat-radio-button>
+        <mat-radio-button value="Medium">Medium</mat-radio-button>
+        <mat-radio-button value="High">High</mat-radio-button>
+        <mat-radio-button value="Critical">Critical</mat-radio-button>
+      </mat-radio-group> <br>
+      <button mat-raised-button color="accent" type="submit" [disabled]="noteForm.invalid"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="save"></mat-icon>
+      </button>​
+ </form>
+
+
+ 
+

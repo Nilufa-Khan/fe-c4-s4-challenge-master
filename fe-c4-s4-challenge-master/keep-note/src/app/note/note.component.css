@@ -1,0 +1,10 @@
+.example-card {
+    max-width: 400px;
+  }
+#categoty{
+  display: inline;
+  background-color: rgba(135, 137, 139,0.5);
+  padding: 5px;
+  border-radius: 15px;
+  
+}

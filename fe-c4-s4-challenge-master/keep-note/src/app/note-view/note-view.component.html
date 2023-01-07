@@ -1,0 +1,14 @@
+
+
+<app-search (searchs)="search($event)"></app-search>
+<app-note [notes] = "notes"></app-note>
+<div style="float:right; margin-right: 50px;">
+    <button mat-icon-button mat-raised-button> 
+        <mat-icon fontIcon="add_circle" color="primary" (click)="toggle()"></mat-icon>
+    </button>
+</div>
+<div>
+    <ng-template [ngIf]="flag">
+        <app-add-note ></app-add-note>
+    </ng-template>
+</div>
